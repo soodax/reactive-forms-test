@@ -21,7 +21,7 @@ export class SecondComponent implements OnInit {
     })
   }
 
-  phoneArray() {
+  phoneArray(): FormArray {
     return this.contactsForm.get('phoneArray') as FormArray;
   }
 
@@ -29,7 +29,7 @@ export class SecondComponent implements OnInit {
     this.phoneArray().push(new FormControl('', [Validators.required, Validators.minLength(10)]))
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.contactsForm.valid) {
       return alert('pass')
     }

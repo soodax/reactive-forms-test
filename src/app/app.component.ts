@@ -6,6 +6,8 @@ import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
+
 export class AppComponent implements OnInit{
 
   contactsForm = new FormGroup({
@@ -17,7 +19,7 @@ export class AppComponent implements OnInit{
     ])
   })
 
-  phoneArray() {
+  phoneArray(): FormArray {
     return this.contactsForm.get('phoneArray') as FormArray
   }
 
@@ -25,7 +27,7 @@ export class AppComponent implements OnInit{
     this.contactsForm.controls.phoneArray.push(new FormControl('', [Validators.required, Validators.minLength(10)]))
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.contactsForm.valid) {
       return alert('pass')
     }
