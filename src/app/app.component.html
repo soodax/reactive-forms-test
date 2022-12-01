@@ -1,17 +1,15 @@
-<!-- Без FormBuilder -->
-<!-- <div class="container">
-  <form [formGroup]="contactsForm">
-    <input class="input" type="text" placeholder="City" formControlName="city">
-    <input class="input" type="text" placeholder="Street" formControlName="street">
-    <input class="input" type="text" placeholder="Apartment" formControlName="apartment">
-    <div formArrayName="phoneArray" *ngFor="let phone of phoneArray().controls; index as i">
-      <input class="input" placeholder="Phone number" type="tel"  [formControlName]="i">
-    </div>
-    
-    <button class="btn" (click)="addNewPhone()">Add phone</button>
-    <button class="btn" (click)="onSubmit()">Submit</button>
-  </form>
-</div> -->
+<div class="container">
 
-<!-- С FormBuilder -->
-<app-second></app-second>
+  <!-- Создаем обычную форму через ReactiveForms и даем ей и контролам имя -->
+  <form [formGroup]="testForm">
+    <!-- Используем кастомные контролы -->
+    <app-custom-input formControlName="name"></app-custom-input>
+    <app-custom-input formControlName="email"></app-custom-input>
+  </form>
+
+  <!-- Выводим данные для теста -->
+  {{testForm.value | json}}
+
+</div>
+
+

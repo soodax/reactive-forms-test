@@ -1,5 +1,5 @@
-import { Component, OnInit, } from '@angular/core';
-import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,33 +8,12 @@ import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 })
 
 
-export class AppComponent implements OnInit{
+export class AppComponent {
 
-  contactsForm = new FormGroup({
-    city: new FormControl('', Validators.required),
-    street: new FormControl('', Validators.required),
-    apartment: new FormControl('', Validators.required),
-    phoneArray: new FormArray([
-      new FormControl('', [Validators.required, Validators.minLength(10)])
-    ])
+  //Созданием формы через FormGroup
+  testForm = new FormGroup({
+    name: new FormControl('', [Validators.minLength(2)]),
+    email: new FormControl('', [Validators.email])
   })
 
-  phoneArray(): FormArray {
-    return this.contactsForm.get('phoneArray') as FormArray
-  }
-
-  addNewPhone() {
-    this.contactsForm.controls.phoneArray.push(new FormControl('', [Validators.required, Validators.minLength(10)]))
-  }
-
-  onSubmit(): void {
-    if (this.contactsForm.valid) {
-      return alert('pass')
-    }
-
-    alert('error')
-  }
-
-  ngOnInit() {
-  }
 }
